@@ -8,6 +8,7 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import pylab as pl
 import numpy as np
+from sklearn import svm
 
 #import numpy as np
 #import matplotlib.pyplot as plt
@@ -101,12 +102,6 @@ def makeTerrainData(n_points=1000):
 
 
 
-from sklearn.naive_bayes import GaussianNB
-
-import numpy as np
-import pylab as pl
-
-
 features_train, labels_train, features_test, labels_test = makeTerrainData()
 
 ### the training data (features_train, labels_train) have both "fast" and "slow" points mixed
@@ -120,7 +115,7 @@ bumpy_slow = [features_train[ii][1] for ii in range(0, len(features_train)) if l
 
 # You will need to complete this function imported from the ClassifyNB script.
 # Be sure to change to that code tab to complete this quiz.
-clf = GaussianNB()
+clf = svm.SVC(kernel = 'linear')
 
 clf.fit(features_train,labels_train)
 
